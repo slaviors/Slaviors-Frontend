@@ -17,7 +17,7 @@ export default function Footer() {
               className="h-8 invert"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-900">
-              Flowbite
+              Slaviors
             </span>
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
