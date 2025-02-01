@@ -5,22 +5,26 @@ const webPlans = [
     name: "Static",
     price: 11.99,
     features: [
+      "Front-end development only",
       "Responsive design",
+      "Vanilla, React, NextJS",
       "Basic SEO optimization",
-      "Start from 1 month of support",
+      "1 month of support",
+      "Price does not include hosting, domain, and database server",
     ],
-    cta: "Get Started",
+    cta: "Choose Plan",
   },
   {
     name: "Dynamic",
     price: 69.99,
     features: [
-      "Up to 5 pages",
+      "Full-stack development",
       "Content Management System",
+      "Responsive design",
+      "React, NextJS, NodeJS, Express, NestJS",
       "Advanced SEO package",
-      "E-commerce integration",
-      "3 rounds of revisions",
-      "3 months of support",
+      "4 months of support",
+      "Price does not include hosting, domain, and database server",
     ],
     cta: "Choose Plan",
   },
@@ -35,7 +39,7 @@ const webPlans = [
       "Comprehensive security",
       "Extended support plans",
     ],
-    cta: "Contact for Custom Quote",
+    cta: "Contact",
   },
 ]
 
@@ -106,7 +110,7 @@ export default function PricingSection() {
             Custom pricing based on your requirements
           </div>
           <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded transition duration-300">
-            Contact for Custom Quote
+            Contact
           </button>
         </div>
       </div>

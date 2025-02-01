@@ -18,7 +18,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Slaviors | We Build The Sex Bot",
+  title: "Slaviors | We Build The Future",
   description: "Kami siap diperbudak",
 };
 
