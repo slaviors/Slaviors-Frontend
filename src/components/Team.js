@@ -1,75 +1,92 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const teamMembers = [
   {
-    name: 'Rafi Ahmad Zaini',
-    position: 'Team Leader, AI and Machine Learning Engineer',
-    bio: 'Expert in building AI and Machine Learning models.',
-    image: '/assets/rafi.jpg',
-    link: 'https://xnxx.com'
+    name: "Rafi Ahmad Zaini",
+    position: "Team Leader, AI and Machine Learning Engineer",
+    bio: "Expert in building AI and Machine Learning models.",
+    image: "/assets/rafi.jpg",
+    link: "https://xnxx.com/@rafizaini",
   },
   {
-    name: 'Muhammad Qurtifa Wijaya',
-    position: 'DevOps Engineer, Server Administrator',
-    bio: 'Expert in managing servers and deploying applications.',
-    image: '/assets/qurtifa.png',
-    link: 'https://qurtifa.my.id'
+    name: "Muhammad Qurtifa Wijaya",
+    position: "DevOps Engineer, Server Administrator",
+    bio: "Expert in managing servers and deploying applications.",
+    image: "/assets/qurtifa.png",
+    link: "https://qurtifa.me",
   },
   {
-    name: 'Muhammad Farrel Rabbani',
-    position: 'Graphic Designer, Frontend Developer',
-    bio: 'Expert in creating beautiful and user-friendly interfaces.',
-    image: '/assets/farrel.jpg',
-    link: 'https://frl.blue'
+    name: "Muhammad Farrel Rabbani",
+    position: "Graphic Designer, Frontend Developer",
+    bio: "Expert in creating beautiful and user-friendly interfaces.",
+    image: "/assets/farrel.jpg",
+    link: "https://frl.blue",
   },
   {
-    name: 'Rejaka Abimanyu Susanto',
-    position: 'Fullstack Developer, Database Engineer',
-    bio: 'Expert in building scalable and secure web applications.',
-    image: '/assets/abimsukafemboy.png',
-    link: 'https://rejaka.me'
-  }
+    name: "Rejaka Abimanyu Susanto",
+    position: "Fullstack Developer, Database Engineer",
+    bio: "Expert in building scalable and secure web applications.",
+    image: "/assets/abimsukafemboy.png",
+    link: "https://rejaka.me",
+  },
 ];
 
 const Team = () => {
   return (
-    <div className="container mx-auto my-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Our Team</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {teamMembers.map((member, index) => (
-          <div
-            key={index}
-            className="bg-crm shadow-lg rounded-lg overflow-hidden"
-          >
-            <a href={member.link} target="_blank" rel="noopener noreferrer">
-              <div className="flex justify-center pt-6">
+    <section className="bg-brn">
+      <div className="container px-6 py-10 mx-auto">
+        <h1 className="text-2xl font-semibold text-center text-softBrn capitalize lg:text-3xl">
+          Our <span className="text-whiteCream">Executive Team</span>
+        </h1>
+
+        <p className="max-w-2xl mx-auto my-6 text-center text-whiteCream">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
+          ex placeat modi magni quia error alias, adipisci rem similique, at
+          omnis eligendi optio eos harum.
+        </p>
+
+        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
+          {teamMembers.map((member, index) => (
+            <div
+              className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl border-whiteCream group bg-brn"
+              key={index}
+            >
+              <div className="flex flex-col sm:-mx-4 sm:flex-row">
                 <Image
+                  className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-whiteCream"
                   src={member.image}
                   alt={member.name}
-                  width={150}
-                  height={150}
-                  className="rounded-full shadow-md"
+                  width={96}
+                  height={96}
                 />
+
+                <div className="mt-4 sm:mx-4 sm:mt-0">
+                  <h1 className="text-xl font-semibold text-gray-700 capitalize md:text-2xl dark:text-white group-hover:text-white">
+                    {member.name}
+                  </h1>
+
+                  <p className="mt-2 text-gray-500 capitalize dark:text-whiteCream group-hover:text-whiteCream">
+                    {member.position}
+                  </p>
+
+                  <a
+                    href={member.link}
+                    className="mt-4 text-gray-500 dark:text-whiteCream group-hover:text-whiteCream"
+                  >
+                    - {member.link}
+                  </a>
+                </div>
               </div>
-            </a>
-            <div className="p-6 text-center">
-              <h2 className="text-[19px] text-brn font-bold mb-2">{member.name}</h2>
-              <h3 className="text-md text-gray-500 italic mb-4">{member.position}</h3>
-              <p className="text-gray-700 mb-4">{member.bio}</p>
-              <a
-                href={member.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-softBrn font-bold relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-softBrn after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
-              >
-                {member.link.replace(/^https?:\/\//, '')}
-              </a>
+
+              <p className="mt-4 text-gray-500 capitalize dark:text-whiteCream group-hover:text-whiteCream">
+                {member.bio}
+              </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

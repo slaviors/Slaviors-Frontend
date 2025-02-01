@@ -11,8 +11,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="z-50 sticky top-0 px-4 flex justify-center flex-col bg-none my-4">
-      <div className="p-4 flex items-center justify-between w-full border-gray-200 rounded-full shadow-lg bg-crm mt-4">
+    <nav className="z-50 relative px-4 flex justify-center flex-col bg-gradient-to-r from-brn to-softBrn">
+      <div className="p-4 sticky top-0 flex items-center justify-between w-full border-gray-200 rounded-full shadow-lg bg-crm my-4">
         {/* Logo */}
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <Image
