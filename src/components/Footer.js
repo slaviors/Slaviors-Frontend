@@ -20,15 +20,11 @@ export default function Footer() {
               className="flex items-center mb-4 space-x-3 rtl:space-x-reverse"
             >
               <Image
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="/assets/black-logo.png"
                 alt="Slaviors Logo"
-                width={32}
-                height={32}
-                className="h-8 invert"
+                width={96}
+                height={48}
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-900">
-                Slaviors
-              </span>
             </a>
             <p className="text-sm text-gray-600 mb-4">
               Empowering businesses with innovative digital solutions. From web

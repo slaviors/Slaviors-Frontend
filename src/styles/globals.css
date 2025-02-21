@@ -3,30 +3,374 @@
 @tailwind utilities;
 
 :root {
+  /* Light theme */
   --background: #ffffff;
   --foreground: #f9f9f7;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-primary: #815854;
+  --accent-secondary: #de9f99;
+  --cream-color: #f9ebde;
+  --white-cream: #fbf9ed;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+/* Dark theme */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #815854;
     --foreground: #ededed;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --accent-primary: #f9ebde;
+    --accent-secondary: #fbf9ed;
+    --cream-color: #815854;
+    --white-cream: #de9f99;
   }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow: -moz-scrollbars-none;
-  -ms-overflow-style: none;
+  min-height: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply font-Jakarta;
 }
 
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+/* Typography */
+@layer base {
+  h1 {
+    @apply text-4xl font-bold md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl font-bold md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply text-2xl font-bold md:text-3xl lg:text-4xl;
+  }
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+}
+
+/* Custom scrollbar styling */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--background);
+  }
+}
+
+/* Mobile and tablet devices */
+@media (max-width: 767px) {
+  body {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+/* Common animations */
+@layer utilities {
+  .animate-fade-in {
+    @apply transition-opacity duration-300 ease-in-out;
+  }
+
+  .animate-slide-up {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .animate-scale {
+    @apply transition-transform duration-200 ease-in-out;
+  }
+}
+
+/* Interactive elements */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg 
+           transition-all duration-200 font-semibold;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--accent-primary)] text-[var(--background)] 
+           hover:bg-[var(--accent-secondary)] focus:ring-2 
+           focus:ring-[var(--accent-primary)] focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-[var(--accent-primary)] 
+           text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] 
+           hover:text-[var(--background)];
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 
+           focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent
+           bg-white dark:bg-gray-800 transition-all duration-200;
+  }
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent-primary);
+  color: var(--background);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container styles */
+.container {
+  @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply backdrop-blur-sm bg-white/10 dark:bg-black/10;
+}
+
+/* Image optimizations */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Focus styles */
+:focus {
+  @apply outline-none ring-2 ring-[var(--accent-primary)] ring-offset-2;
+}
+
+/* Loading state animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on navbar height */
+}
+
+/* Custom animation for navbar items */
+.nav-link-underline {
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-brn transform scale-x-0 transition-transform duration-300 origin-left;
+}
+
+/* Add this if you want to prevent content shift when scrollbar appears/disappears */
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Card animation */
+.animate-in {
+  animation: animateIn 0.6s ease-out forwards;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient text animation */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-in {
+  animation: animateIn 0.6s ease-out forwards;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-in {
+  animation: animateIn 0.6s ease-out forwards;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+.animate-wave {
+  animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+.animate-wave-slow {
+  animation: wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
