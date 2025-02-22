@@ -17,37 +17,52 @@ const StatCard = ({ number, label, delay }) => (
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [particles, setParticles] = useState([]);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+    // Generate particle positions after component mounts
+    const newParticles = Array(6).fill(null).map(() => ({
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      width: Math.random() * 300 + 100,
+      height: Math.random() * 300 + 100,
+      duration: Math.random() * 10 + 15
+    }));
+    setParticles(newParticles);
+    setIsLoaded(true);
+  }, []);
+
+
   return (
     <main className="relative min-h-screen overflow-hidden">
       {/* Animated Background Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+        {isLoaded && particles.map((particle, i) => (
           <div
             key={i}
             className="absolute bg-white/10 rounded-full blur-xl animate-float"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 300 + 100}px`,
+              top: `${particle.top}%`,
+              left: `${particle.left}%`,
+              width: `${particle.width}px`,
+              height: `${particle.height}px`,
               animationDelay: `${i * 1.5}s`,
-              animationDuration: `${Math.random() * 10 + 15}s`
+              animationDuration: `${particle.duration}s`
             }}
           />
         ))}
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-16 md:pt-24 pb-20 md:pb-32 px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-16 md:pt-[0] pb-20 md:pb-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid items-center grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
             {/* Left Content */}
-            <div className={`space-y-12 max-w-xl mx-auto lg:max-w-none transform transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
+            <div className={`space-y-6 max-w-xl mx-auto lg:max-w-none transform transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
               <div className="space-y-8">
                 <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold text-crm font-Jakarta tracking-tight leading-tight">
                   Create Future,{" "}
@@ -109,9 +124,9 @@ const Home = () => {
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6">
-                <StatCard number="25+" label="Projects" delay="0.3" />
-                <StatCard number="100%" label="Success Rate" delay="0.5" />
-                <StatCard number="24/7" label="Support" delay="0.7" />
+                <StatCard number="4" label="Projects" delay="0.3" />
+                <StatCard number="85%" label="Success Rate" delay="0.5" />
+                <StatCard number="10h/day" label="Support" delay="0.7" />
               </div>
             </div>
 
