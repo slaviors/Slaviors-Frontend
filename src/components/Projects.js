@@ -105,7 +105,7 @@ const ProjectCard = ({ project }) => {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-crm backdrop-blur-md rounded-full text-whiteCream hover:bg-crm/80 transition-colors duration-300 shadow-lg"
+            className="flex items-center gap-2 px-4 py-2 bg-crm backdrop-blur-md rounded-full text-brn/80 hover:text-brn/90 transition-colors duration-300 shadow-lg"
           >
             <span>Visit</span>
             <ExternalLink className="w-4 h-4" />
